@@ -25,7 +25,7 @@ SECRET_KEY = 'rc@!lb3koe6bb7x0n-et!(oi^+%9l04cfl#z_x#r=p^1&2@m+5'
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'frozen-scrubland-25868.herokuapp.com'
+    'cocktails-reinout.herokuapp.com'
 ]
 
 # Application definition

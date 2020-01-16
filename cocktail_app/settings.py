@@ -24,7 +24,9 @@ SECRET_KEY = 'rc@!lb3koe6bb7x0n-et!(oi^+%9l04cfl#z_x#r=p^1&2@m+5'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'frozen-scrubland-25868.herokuapp.com'
+]
 
 # Application definition
 
@@ -123,4 +125,3 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 MEDIA_URL = 'media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-

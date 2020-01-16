@@ -1,0 +1,39 @@
+{% extends 'recipes/overview.html' %}
+{% block content %}
+
+<section class="page-section" id="upload">
+    <div class="container">
+
+        <!-- Contact Section Heading -->
+        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Nieuw ingredient</h2>
+
+        <!-- Icon Divider -->
+        <div class="divider-custom">
+            <div class="divider-custom-line"></div>
+            <div class="divider-custom-icon">
+                <i class="fas fa-star"></i>
+            </div>
+            <div class="divider-custom-line"></div>
+        </div>
+
+        <center>
+            <form method='POST' enctype="multipart/form-data">
+                {% csrf_token %}
+                <table class='w-50 table table-light' style="border-radius:10px;">
+                    {% for field in upload_form %}
+                    <tr>
+                        <th>{{field.label}}</th>
+                        <td>{{ field }}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-xl" id="sendMessageButton">Verzenden</button>
+                </div>
+            </form>
+        </center>
+    </div>
+</section>
+
+{% endblock %}

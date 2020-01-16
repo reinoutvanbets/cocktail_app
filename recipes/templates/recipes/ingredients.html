@@ -1,0 +1,39 @@
+{% extends 'recipes/overview.html' %}
+{# cocktail_app/templates/recipes/ingredients.html #}
+{% load render_table from django_tables2 %}
+{% load bootstrap3 %}
+{% block content %}
+
+
+<section class="page-section" id="ingredients">
+    <div class="container">
+
+        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Ingredients</h2>
+
+        <!-- Icon Divider -->
+        <div class="divider-custom">
+            <div class="divider-custom-line"></div>
+            <div class="divider-custom-icon">
+                <i class="fas fa-star"></i>
+            </div>
+            <div class="divider-custom-line"></div>
+        </div>
+
+        <div class="center">
+
+            {% if filter %}
+            <form action="" method="get" class="form form-inline">
+                {% bootstrap_form filter.form layout='inline' %}
+                {% bootstrap_button 'filter' %}
+            </form>
+            {% endif %}
+            <br/>
+            {% render_table table 'django_tables2/bootstrap.html' %}
+
+
+        </div>
+
+
+    </div>
+</section>
+{% endblock %}

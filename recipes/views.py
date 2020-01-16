@@ -1,7 +1,27 @@
-from django.shortcuts import render, redirect
-from .models import Cocktail
-from .forms import CocktailCreate
+import django_filters
 from django.http import HttpResponse
+from django.shortcuts import render, redirect
+from django_filters.views import FilterView
+from django_tables2 import LazyPaginator
+from django_tables2.views import SingleTableMixin
+
+from .forms import CocktailCreate, IngredientCreate
+from .models import Cocktail, Ingredient
+from .tables import IngredientTable
+
+
+class IngredientFilter(django_filters.FilterSet):
+    class Meta:
+        model = Ingredient
+        fields = ['name']
+
+
+class FilteredIngredientListView(SingleTableMixin, FilterView):
+    model = Ingredient
+    table_class = IngredientTable
+    template_name = 'recipes/ingredients.html'
+    paginator_class = LazyPaginator
+    filterset_class = IngredientFilter
 
 
 def index(request):
@@ -13,6 +33,11 @@ def cocktails(request):
     return render(request, 'recipes/cocktails.html', {'cocktail_list': cocktail_list})
 
 
+def ingredients(request):
+    ingredient_list = Ingredient.objects.all()
+    return render(request, 'recipes/ingredients.html', {'ingredient_list': ingredient_list})
+
+
 def cocktail_detail(request, cocktail_id):
     cocktail_id = int(cocktail_id)
     try:
@@ -22,7 +47,7 @@ def cocktail_detail(request, cocktail_id):
     return render(request, 'recipes/cocktail_detail.html', {'cocktail': cocktail})
 
 
-def upload(request):
+def upload_cocktail(request):
     upload = CocktailCreate()
     if request.method == 'POST':
         upload = CocktailCreate(request.POST, request.FILES)
@@ -33,7 +58,21 @@ def upload(request):
             return HttpResponse("""your form is wrong, reload on <a href = "{{ url : 'index'}}">reload</a>""")
 
     else:
-        return render(request, 'recipes/upload_form.html', {'upload_form': upload})
+        return render(request, 'recipes/upload_cocktail.html', {'upload_form': upload})
+
+
+def upload_ingredient(request):
+    upload = IngredientCreate()
+    if request.method == 'POST':
+        upload = IngredientCreate(request.POST, request.FILES)
+        if upload.is_valid():
+            upload.save()
+            return redirect('ingredients')
+        else:
+            return HttpResponse("""your form is wrong, reload on <a href = "{{ url : 'index'}}">reload</a>""")
+
+    else:
+        return render(request, 'recipes/upload_ingredient.html', {'upload_form': upload})
 
 
 def update_cocktail(request, cocktail_id):
@@ -46,7 +85,7 @@ def update_cocktail(request, cocktail_id):
     if recipe_form.is_valid():
         recipe_form.save()
         return redirect('cocktails')
-    return render(request, 'recipes/upload_form.html', {'upload_form': recipe_form})
+    return render(request, 'recipes/upload_cocktail.html', {'upload_form': recipe_form})
 
 
 def delete_cocktail(request, cocktail_id):

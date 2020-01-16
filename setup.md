@@ -37,10 +37,8 @@
     - python manage.py makemigrations
     - python manage.py migrate
 
-#update forms
-  
-# update views
--  
 
+# start server
+- python manage.py runserver
 
 

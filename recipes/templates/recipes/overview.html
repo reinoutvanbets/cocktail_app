@@ -7,8 +7,8 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>Cocktail M</title>
-    <!--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-               integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
     <!-- Custom fonts for this theme -->
     <link href="{% static 'vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
@@ -43,12 +43,20 @@
                     <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{% url 'cocktails' %}">Cocktails</a>
                 </li>
                 <li class="nav-item mx-0 mx-lg-1">
-                    <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
-                       href="{% url 'admin:index' %}">Admin</a>
+                    <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{% url 'ingredients' %}">Ingredients</a>
+                </li>
+                <!--                <li class="nav-item mx-0 mx-lg-1">
+                                    <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
+                                       href="{% url 'admin:index' %}">Admin</a>
+                                </li>-->
+                <li class="nav-item mx-0 mx-lg-1">
+                    <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{% url 'upload-cocktail' %}">New
+                        cocktail</a>
                 </li>
                 <li class="nav-item mx-0 mx-lg-1">
-                    <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{% url 'upload-recipe' %}">Upload
-                        een recept</a>
+                    <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
+                       href="{% url 'upload-ingredient' %}">New
+                        ingredient</a>
                 </li>
             </ul>
         </div>
@@ -62,7 +70,7 @@
     <div class="container d-flex align-items-center flex-column">
 
         <!-- Masthead Avatar Image -->
-        <img class="masthead-avatar mb-5" src="img/avataaars.svg" alt="">
+        <img class="masthead-avatar mb-5" src="" alt="">
 
         <!-- Masthead Heading -->
         <h1 class="masthead-heading text-uppercase mb-0">Cocktail M</h1>

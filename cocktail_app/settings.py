@@ -79,10 +79,10 @@ WSGI_APPLICATION = 'cocktail_app.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'd27ssk9hn5hp2j',
-        'USER': 'xyvktdtjhwaeif',
-        'PASSWORD': '56c795375d9b590524158311fd90dac44f7388a59df5405ab08acafa0665f0ac',
-        'HOST': 'ec2-54-217-234-157.eu-west-1.compute.amazonaws.com',
+        'NAME': 'd89g9ftdeamd10',
+        'USER': 'pzhaaaigveatit',
+        'PASSWORD': 'a5e500b92fb80d06a6ebc5ad2c6e5b55f8e7f33f09d510c999180abe88ad664d',
+        'HOST': 'ec2-107-22-216-151.compute-1.amazonaws.com',
         'PORT': '5432',
     }
 }

@@ -1,15 +1,23 @@
 ## domain
 
 #cocktail
-- creator
-- date created
-- date updated
+- name
 - glass
-- ingredients
-- instructies
-- material
+- ingredients (name + quantity)
+- instructions
+- picture
+- date created
 
 
 #Ingredient
-- creator
-- day
+- name
+- brand
+- dateCreated
+
+
+
+
+
+
+
+

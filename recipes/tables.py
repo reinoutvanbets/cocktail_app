@@ -3,7 +3,10 @@ from .models import Ingredient
 
 
 class IngredientTable(tables.Table):
+
     class Meta:
         model = Ingredient
         template_name = "django_tables2/bootstrap-responsive.html"
-        fields = ("name", 'creator')
+        fields = ("name", 'brand', 'dateCreated')
+
+

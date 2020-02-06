@@ -25,7 +25,8 @@ SECRET_KEY = 'rc@!lb3koe6bb7x0n-et!(oi^+%9l04cfl#z_x#r=p^1&2@m+5'
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'cocktails-reinout.herokuapp.com'
+    'cocktails-reinout.herokuapp.com',
+    '127.0.0.1'
 ]
 
 # Application definition
@@ -125,4 +126,3 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 MEDIA_URL = 'media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-

@@ -13,7 +13,9 @@ from .tables import IngredientTable
 class IngredientFilter(django_filters.FilterSet):
     class Meta:
         model = Ingredient
-        fields = ['name']
+        fields = {
+            'name': ['contains']
+        }
 
 
 class FilteredIngredientListView(SingleTableMixin, FilterView):
@@ -45,6 +47,15 @@ def cocktail_detail(request, cocktail_id):
     except Cocktail.DoesNotExist:
         return redirect('cocktails')
     return render(request, 'recipes/cocktail_detail.html', {'cocktail': cocktail})
+
+
+def ingredient_detail(request, ingredient_id):
+    ingredient_id = int(ingredient_id)
+    try:
+        ingredient = Ingredient.objects.get(id=ingredient_id)
+    except Ingredient.DoesNotExist:
+        return redirect('ingredients')
+    return render(request, 'recipes/ingredient_detail.html', {'ingredient': ingredient})
 
 
 def upload_cocktail(request):
@@ -88,6 +99,19 @@ def update_cocktail(request, cocktail_id):
     return render(request, 'recipes/upload_cocktail.html', {'upload_form': recipe_form})
 
 
+def update_ingredient(request, ingredient_id):
+    ingredient_id = int(ingredient_id)
+    try:
+        ingredient_sel = Ingredient.objects.get(id=ingredient_id)
+    except Ingredient.DoesNotExist:
+        return redirect('ingredients')
+    recipe_form = IngredientCreate(request.POST or None, instance=ingredient_sel)
+    if recipe_form.is_valid():
+        recipe_form.save()
+        return redirect('ingredients')
+    return render(request, 'recipes/upload_ingredient.html', {'upload_form': recipe_form})
+
+
 def delete_cocktail(request, cocktail_id):
     cocktail_id = int(cocktail_id)
     try:
@@ -96,3 +120,13 @@ def delete_cocktail(request, cocktail_id):
         return redirect('cocktails')
     cocktail_sel.delete()
     return redirect('cocktails')
+
+
+def delete_ingredient(request, ingredient_id):
+    ingredient_id = int(ingredient_id)
+    try:
+        ingredient_sel = Ingredient.objects.get(id=ingredient_id)
+    except Ingredient.DoesNotExist:
+        return redirect('ingredients')
+    ingredient_sel.delete()
+    return redirect('ingredients')

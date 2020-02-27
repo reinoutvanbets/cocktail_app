@@ -13,7 +13,10 @@ urlpatterns = [
     path('cocktails/update/<int:cocktail_id>', views.update_cocktail),
     path('cocktails/delete/<int:cocktail_id>', views.delete_cocktail),
     path('ingredients/upload', views.upload_ingredient, name='upload-ingredient'),
-    path('ingredients/', FilteredIngredientListView.as_view(), name='ingredients')
+    path('ingredients/', FilteredIngredientListView.as_view(), name='ingredients'),
+    path('ingredients/<int:ingredient_id>', views.ingredient_detail),
+    path('ingredients/update/<int:ingredient_id>', views.update_ingredient),
+    path('ingredients/delete/<int:ingredient_id>', views.delete_ingredient),
 ]
 # DataFlair
 if DEBUG:

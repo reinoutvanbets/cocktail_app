@@ -20,17 +20,19 @@
         </div>
 
         <div class="center">
-
             {% if filter %}
             <form action="" method="get" class="form form-inline">
                 {% bootstrap_form filter.form layout='inline' %}
                 {% bootstrap_button 'filter' %}
+                <div class="float-right">
+                    <a class="btn btn-large btn-primary logout" href="/ingredients/upload">
+                        <i class="fas fa-plus-circle" aria-hidden="true"> New Ingredient</i>
+                    </a>
+                </div>
             </form>
             {% endif %}
             <br/>
             {% render_table table 'django_tables2/bootstrap.html' %}
-
-
         </div>
 
 
